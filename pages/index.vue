@@ -112,7 +112,74 @@
               alt="welcome"
             />
 
-            <CButton variant-color="blue" size="md"> Continue </CButton>
+            <CButton
+              variant-color="blue"
+              size="md"
+              @click="
+                showModal = false
+                showGetStartedModal = false
+                registerFormModal = true
+              "
+            >
+              Continue
+            </CButton>
+
+            <CModalFooter> </CModalFooter>
+            <CModalCloseButton @click="showGetStartedModal = false" />
+          </CModalContent>
+        </CModal>
+
+        <CModal :is-open="registerFormModal">
+          <CModalOverlay />
+          <CModalContent d="flex" justifyContent="center">
+            <CModalHeader></CModalHeader>
+            <CHeading as="h1" size="lg" align="center"
+              >Let's fill this form.</CHeading
+            >
+
+            <CBox m="2em">
+              <CFormControl>
+                <CFormLabel>Name</CFormLabel>
+                <CInput ref="initialRef" placeholder="Name" />
+              </CFormControl>
+
+              <CFormControl mt="4">
+                <CFormLabel>Email</CFormLabel>
+                <CInput placeholder="Email" />
+              </CFormControl>
+
+              <CFormControl mt="4">
+                <CFormLabel>Password</CFormLabel>
+                <CInput
+                  placeholder="Password"
+                  :type="show ? 'text' : 'password'"
+                  VModel="password"
+                />
+              </CFormControl>
+
+              <CFormControl mt="4">
+                <CFormLabel>Confirm Password</CFormLabel>
+                <CInput
+                  placeholder="Confirm Password"
+                  :type="show ? 'text' : 'password'"
+                  VModel="confirmpassword"
+                />
+              </CFormControl>
+            </CBox>
+
+            <CButton
+              variant-color="blue"
+              size="md"
+              w="100px"
+              ml="20em"
+              @click="
+                showModal = false
+                showGetStartedModal = false
+                registerFormModal = true
+              "
+            >
+              Continue
+            </CButton>
 
             <CModalFooter> </CModalFooter>
             <CModalCloseButton @click="showGetStartedModal = false" />
@@ -141,7 +208,10 @@ import {
   CFlex,
   CHeading,
   CImage,
-  CText
+  CText,
+  CFormControl,
+  CFormLabel,
+  CInput
 } from '@chakra-ui/vue'
 
 export default {
@@ -164,12 +234,16 @@ export default {
     CFlex,
     CHeading,
     CImage,
-    CText
+    CText,
+    CFormControl,
+    CFormLabel,
+    CInput
   },
   data () {
     return {
       showModal: false,
       showGetStartedModal: false,
+      registerFormModal: false,
       mainStyles: {
         dark: {
           bg: 'gray.700',
