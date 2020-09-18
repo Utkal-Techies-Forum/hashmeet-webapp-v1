@@ -49,29 +49,38 @@
             <CAvatarBadge size="1.0em" border-color="papayawhip" bg="tomato" />
           </CAvatar>
         </CAvatarGroup>
-        <CButton
-          left-icon="close"
-          variant-color="red"
-          mt="3"
-          @click="showModal = true"
-        >
-          Delete Account
+        <CButton variant-color="blue" mt="3" @click="showModal = true">
+          Register
         </CButton>
+
         <CModal :is-open="showModal">
           <CModalOverlay />
-          <CModalContent>
-            <CModalHeader>Are you sure?</CModalHeader>
-            <CModalBody>Deleting user cannot be undone</CModalBody>
-            <CModalFooter>
-              <CButton @click="showModal = false"> Cancel </CButton>
-              <CButton
-                margin-left="3"
-                variant-color="red"
-                @click="showModal = false"
-              >
-                Delete User
-              </CButton>
-            </CModalFooter>
+          <CModalContent d="flex" alignItems="center" justifyContent="center">
+            <CModalHeader>Welcome</CModalHeader>
+            <CModalBody>Great Decision!</CModalBody>
+            <CImage
+              m="0.4em"
+              w="168px"
+              h="186px"
+              src="/welcome.png"
+              alt="welcome"
+            />
+
+            <CBox align="center" m="2em">
+              <CHeading as="h4" size="md">Sign up as Attendee</CHeading>
+
+              <CButton variant-color="blue" size="md"> Register </CButton>
+            </CBox>
+
+            <CText>Or</CText>
+
+            <CBox align="center" m="2em">
+              <CHeading as="h4" size="md">Sign up as Speaker</CHeading>
+
+              <CButton variant-color="blue" size="md"> Register </CButton>
+            </CBox>
+
+            <CModalFooter> </CModalFooter>
             <CModalCloseButton @click="showModal = false" />
           </CModalContent>
         </CModal>
@@ -96,7 +105,9 @@ import {
   CModalCloseButton,
   CIconButton,
   CFlex,
-  CHeading
+  CHeading,
+  CImage,
+  CText
 } from '@chakra-ui/vue'
 
 export default {
@@ -117,7 +128,9 @@ export default {
     CModalCloseButton,
     CIconButton,
     CFlex,
-    CHeading
+    CHeading,
+    CImage,
+    CText
   },
   data () {
     return {
