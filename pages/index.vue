@@ -69,7 +69,13 @@
             <CBox align="center" m="2em">
               <CHeading as="h4" size="md">Sign up as Attendee</CHeading>
 
-              <CButton variant-color="blue" size="md"> Register </CButton>
+              <CButton
+                variant-color="blue"
+                size="md"
+                @click="showGetStartedModal = true"
+              >
+                Register
+              </CButton>
             </CBox>
 
             <CText>Or</CText>
@@ -77,11 +83,39 @@
             <CBox align="center" m="2em">
               <CHeading as="h4" size="md">Sign up as Speaker</CHeading>
 
-              <CButton variant-color="blue" size="md"> Register </CButton>
+              <CButton
+                variant-color="blue"
+                size="md"
+                @click="showGetStartedModal = true"
+              >
+                Register
+              </CButton>
             </CBox>
 
             <CModalFooter> </CModalFooter>
             <CModalCloseButton @click="showModal = false" />
+          </CModalContent>
+        </CModal>
+
+        <CModal :is-open="showGetStartedModal">
+          <CModalOverlay />
+          <CModalContent d="flex" alignItems="center" justifyContent="center">
+            <CModalHeader></CModalHeader>
+            <CModalBody>Looks like you are not a member yet.</CModalBody>
+            <CHeading as="h1" size="lg">Let's get started!</CHeading>
+
+            <CImage
+              m="0.4em"
+              w="168px"
+              h="186px"
+              src="/welcome.png"
+              alt="welcome"
+            />
+
+            <CButton variant-color="blue" size="md"> Continue </CButton>
+
+            <CModalFooter> </CModalFooter>
+            <CModalCloseButton @click="showGetStartedModal = false" />
           </CModalContent>
         </CModal>
       </CFlex>
@@ -135,6 +169,7 @@ export default {
   data () {
     return {
       showModal: false,
+      showGetStartedModal: false,
       mainStyles: {
         dark: {
           bg: 'gray.700',
