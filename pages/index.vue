@@ -191,6 +191,9 @@
 </template>
 
 <script lang="js">
+import RepositoryFactory from '../repositries/RepositoryFactory'
+const Users = RepositoryFactory.get('users')
+
 import {
   CBox,
   CButton,
