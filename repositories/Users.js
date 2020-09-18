@@ -1,7 +1,7 @@
 import RepositoryV1 from './Repository'
 
 const resourceSignup = '/users'
-const resourceSigin = '/users/auth'
+const resourceSigin = '/auth/login'
 
 export default {
   register (payload) {
