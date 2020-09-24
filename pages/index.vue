@@ -116,9 +116,9 @@
               variant-color="blue"
               size="md"
               @click="
-                showModal = false
-                showGetStartedModal = false
-                registerFormModal = true
+                showModal = false;
+                showGetStartedModal = false;
+                registerFormModal = true;
               "
             >
               Continue
@@ -173,9 +173,9 @@
               w="100px"
               ml="20em"
               @click="
-                showModal = false
-                showGetStartedModal = false
-                registerFormModal = true
+                showModal = false;
+                showGetStartedModal = false;
+                registerFormModal = true;
               "
             >
               Continue
@@ -191,8 +191,8 @@
 </template>
 
 <script lang="js">
-import RepositoryFactory from '../repositries/RepositoryFactory'
-const Users = RepositoryFactory.get('users')
+//import RepositoryFactoryV2 from '../../repositories/RepositoryFactory'
+//const Users = RepositoryFactoryV2.get('users')
 
 import {
   CBox,

@@ -1,4 +1,4 @@
-import RepositoryV1 from './Repository'
+/* import RepositoryV1 from './Repository'
 
 const resourceSignup = '/users'
 const resourceSigin = '/auth/login'
@@ -12,3 +12,4 @@ export default {
     return RepositoryV1.post(`${resourceSigin}`, payload)
   }
 }
+ */

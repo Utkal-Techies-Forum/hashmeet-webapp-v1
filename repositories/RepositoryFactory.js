@@ -1,9 +1,10 @@
-import Users from './Users'
+/* import Users from "./Users";
 
-const repositories = {
-  users: Users
-}
+export const repositories = {
+  users: Users,
+};
 
 export const RepositoryFactoryV2 = {
-  get: name => repositories[name]
-}
+  get: (name) => repositories[name],
+};
+ */

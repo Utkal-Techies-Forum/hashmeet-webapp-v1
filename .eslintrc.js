@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
   root: true,
   env: {
     browser: true,
@@ -17,4 +17,4 @@ module.exports = {
   plugins: ['prettier'],
   // add your custom rules here
   rules: {},
-}
+}*/

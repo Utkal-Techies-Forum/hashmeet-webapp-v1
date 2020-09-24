@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "@chakra-ui/nuxt": "^0.0.10",
+    "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/emotion": "^0.0.1",
-    "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.5"
   },
