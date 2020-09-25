@@ -49,11 +49,82 @@
             <CAvatarBadge size="1.0em" border-color="papayawhip" bg="tomato" />
           </CAvatar>
         </CAvatarGroup>
-        <CButton variant-color="blue" mt="3" @click="showModal = true">
+        <CButton variant-color="blue" mt="3" @click="showModal = true; step = 0">
           Register
         </CButton>
 
-        <CModal :is-open="showModal">
+        <Modal v-model="showModal">
+          <div slot="header">
+            Welcome
+          </div>
+          <div slot="body">
+            <div v-if="step === 0">
+              Great Decision!
+              <CImage
+                m="0.4em"
+                w="168px"
+                h="186px"
+                src="/welcome.png"
+                alt="welcome"
+              />
+
+              <CBox align="center" m="2em">
+                <CHeading as="h4" size="md">Sign up as Attendee</CHeading>
+
+                <CButton
+                  variant-color="blue"
+                  size="md"
+                  @click="step = 1"
+                >
+                  Register
+                </CButton>
+              </CBox>
+
+              <CText>Or</CText>
+
+              <CBox align="center" m="2em">
+                <CHeading as="h4" size="md">Sign up as Speaker</CHeading>
+
+                <CButton
+                  variant-color="blue"
+                  size="md"
+                  @click="showGetStartedModal = true"
+                >
+                  Register
+                </CButton>
+              </CBox>
+            </div>
+            
+            <div v-if="step === 1">
+              Looks like you are not a member yet.
+              <CHeading as="h1" size="lg">Let's get started!</CHeading>
+
+              <CImage
+                m="0.4em"
+                w="168px"
+                h="186px"
+                src="/welcome.png"
+                alt="welcome"
+              />
+            </div>
+          </div>
+          <div slot="footer">
+            <div v-if="step == 1">
+              <CButton
+                variant-color="blue"
+                size="md">
+                Back
+              </CButton>
+              <CButton
+                variant-color="blue"
+                size="md">
+                Continue
+              </CButton>
+            </div>
+          </div>
+        </Modal>
+
+        <!-- <CModal :is-open="showModal">
           <CModalOverlay />
           <CModalContent d="flex" alignItems="center" justifyContent="center">
             <CModalHeader>Welcome</CModalHeader>
@@ -95,7 +166,7 @@
             <CModalFooter> </CModalFooter>
             <CModalCloseButton @click="showModal = false" />
           </CModalContent>
-        </CModal>
+        </CModal> -->
 
         <CModal :is-open="showGetStartedModal">
           <CModalOverlay />
@@ -137,7 +208,7 @@
               >Let's fill this form.</CHeading
             >
 
-            <CBox m="2em">
+            <!-- <CBox m="2em">
               <CFormControl>
                 <CFormLabel>Name</CFormLabel>
                 <CInput ref="initialRef" placeholder="Name" />
@@ -165,7 +236,7 @@
                   VModel="confirmpassword"
                 />
               </CFormControl>
-            </CBox>
+            </CBox> -->
 
             <CButton
               variant-color="blue"
@@ -194,6 +265,8 @@
 //import RepositoryFactoryV2 from '../../repositories/RepositoryFactory'
 //const Users = RepositoryFactoryV2.get('users')
 
+import Modal from '../components/commons/Modal.vue';
+
 import {
   CBox,
   CButton,
@@ -221,6 +294,7 @@ export default {
   name: 'App',
   inject: ['$chakraColorMode', '$toggleColorMode'],
   components: {
+    Modal,
     CBox,
     CButton,
     CAvatarGroup,
@@ -244,6 +318,7 @@ export default {
   },
   data () {
     return {
+      step: -1,
       showModal: false,
       showGetStartedModal: false,
       registerFormModal: false,
