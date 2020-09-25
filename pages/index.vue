@@ -1,126 +1,73 @@
 <template>
   <div class="container">
     <CBox
-      v-bind="mainStyles[colorMode]"
       d="flex"
       w="100vw"
       h="100vh"
       flex-dir="column"
       justify-content="center"
     >
-      <CHeading text-align="center" mb="4"> ⚡️ Hello chakra-ui/vue </CHeading>
+      <CHeading text-align="center" mb="4">
+        ⚡️ Hello. Welcome to UTF.
+      </CHeading>
       <CFlex justify="center" direction="column" align="center">
-        <CBox mb="3">
-          <CIconButton
-            mr="3"
-            :icon="colorMode === 'light' ? 'moon' : 'sun'"
-            :aria-label="`Switch to ${
-              colorMode === 'light' ? 'dark' : 'light'
-            } mode`"
-            @click="toggleColorMode"
-          />
-          <CButton left-icon="info" variant-color="blue" @click="showToast">
-            Show Toast
-          </CButton>
-        </CBox>
-        <CAvatarGroup>
-          <CAvatar
-            name="Evan You"
-            alt="Evan You"
-            src="https://pbs.twimg.com/profile_images/1206997998900850688/cTXTQiHm_400x400.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar
-            name="Jonathan Bakebwa"
-            alt="Jonathan Bakebwa"
-            src="https://res.cloudinary.com/xtellar/image/upload/v1572857445/me_zqos4e.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar
-            name="Segun Adebayo"
-            alt="Segun Adebayo"
-            src="https://pbs.twimg.com/profile_images/1169353373012897802/skPUWd6e_400x400.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar src="pop">
-            <CAvatarBadge size="1.0em" border-color="papayawhip" bg="tomato" />
-          </CAvatar>
-        </CAvatarGroup>
-        <CButton variant-color="blue" mt="3" @click="showModal = true; step = 0">
+        <CButton
+          variant-color="blue"
+          mt="3"
+          @click="
+            showModal = true;
+            step = 0;
+          "
+        >
           Register
         </CButton>
 
         <Modal v-model="showModal">
-          <div slot="header">
-            Welcome
-          </div>
+          <c-box slot="header">Welcome</c-box>
           <div slot="body">
             <div v-if="step === 0">
-              Great Decision!
-              <CImage
-                m="0.4em"
-                w="168px"
-                h="186px"
-                src="/welcome.png"
-                alt="welcome"
-              />
-
-              <CBox align="center" m="2em">
-                <CHeading as="h4" size="md">Sign up as Attendee</CHeading>
-
-                <CButton
-                  variant-color="blue"
-                  size="md"
-                  @click="step = 1"
-                >
-                  Register
-                </CButton>
-              </CBox>
-
-              <CText>Or</CText>
-
-              <CBox align="center" m="2em">
-                <CHeading as="h4" size="md">Sign up as Speaker</CHeading>
-
-                <CButton
-                  variant-color="blue"
-                  size="md"
-                  @click="showGetStartedModal = true"
-                >
-                  Register
-                </CButton>
-              </CBox>
+              <c-flex
+                alignItems="center"
+                flexDirection="column"
+                justifyContent="center"
+              >
+                Great Decision!
+                <c-image src="/welcome.png" alt="welcome" />
+                <c-stack align="center">
+                  <CHeading as="h4" size="md">Sign up as Attendee</CHeading>
+                  <c-button variant-color="blue" size="md" @click="step = 1">
+                    Register
+                  </c-button>
+                  <c-text>Or</c-text>
+                  <c-heading as="h4" size="md">Sign up as Speaker</c-heading>
+                  <c-button variant-color="blue" size="md" @click="step = 1">
+                    Register
+                  </c-button>
+                </c-stack>
+              </c-flex>
             </div>
-            
-            <div v-if="step === 1">
-              Looks like you are not a member yet.
-              <CHeading as="h1" size="lg">Let's get started!</CHeading>
 
-              <CImage
-                m="0.4em"
-                w="168px"
-                h="186px"
-                src="/welcome.png"
-                alt="welcome"
-              />
+            <div v-if="step === 1">
+              <c-flex
+                alignItems="center"
+                flexDirection="column"
+                justifyContent="center"
+              >
+                Looks like you are not a member yet.
+                <c-stack align="center">
+                  <c-heading as="h1" size="lg">Let's get started!</c-heading>
+                  <c-image src="/welcome.png" alt="welcome" />
+                </c-stack>
+              </c-flex>
             </div>
           </div>
           <div slot="footer">
-            <div v-if="step == 1">
-              <CButton
-                variant-color="blue"
-                size="md">
+            <c-box v-if="step == 1">
+              <CButton variant-color="blue" size="md" @click="step = 0">
                 Back
               </CButton>
-              <CButton
-                variant-color="blue"
-                size="md">
-                Continue
-              </CButton>
-            </div>
+              <CButton variant-color="blue" size="md"> Continue </CButton>
+            </c-box>
           </div>
         </Modal>
 
@@ -269,6 +216,7 @@ import Modal from '../components/commons/Modal.vue';
 
 import {
   CBox,
+  CStack,
   CButton,
   CAvatarGroup,
   CAvatar,
@@ -296,6 +244,7 @@ export default {
   components: {
     Modal,
     CBox,
+    CStack,
     CButton,
     CAvatarGroup,
     CAvatar,
