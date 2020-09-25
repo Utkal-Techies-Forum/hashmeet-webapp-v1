@@ -129,7 +129,7 @@
           </CModalContent>
         </CModal>
 
-        <CModal :is-open="registerFormModal">
+        <CModal :is-open="registerFormModal" :on-close="close">
           <CModalOverlay />
           <CModalContent d="flex" justifyContent="center">
             <CModalHeader></CModalHeader>
@@ -279,6 +279,12 @@ export default {
         duration: 10000,
         isClosable: true
       })
+    },
+     open() {
+      this.isOpen = true
+    },
+     close() {
+      this.isOpen = false
     }
   }
 }
