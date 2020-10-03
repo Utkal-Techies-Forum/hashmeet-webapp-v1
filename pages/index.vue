@@ -68,22 +68,38 @@
 
                 <CFormControl mt="4">
                   <CFormLabel>Password</CFormLabel>
-                  <CInput
-                    v-model="password"
-                    placeholder="Password"
-                    :type="showPassword ? 'text' : 'password'"
-                    VModel="password"
-                  />
+                  <CInputGroup size="md">
+                    <CInput
+                      v-model="password"
+                      placeholder="Password"
+                      :type="showPassword ? 'text' : 'password'"
+                    />
+                    <CInputRightElement>
+                      <c-icon-button
+                        @click="showPassword = !showPassword"
+                        size="sm"
+                        aria-label="Show/Hide Password"
+                        :icon="showPassword ? 'eye-slash': 'eye'"/>
+                    </CInputRightElement>
+                  </CInputGroup>
                 </CFormControl>
 
                 <CFormControl mt="4">
                   <CFormLabel>Confirm Password</CFormLabel>
-                  <CInput
-                    v-model="confirmpassword"
-                    placeholder="Confirm Password"
-                    :type="showConfirmPassword ? 'text' : 'password'"
-                    VModel="confirmpassword"
-                  />
+                  <CInputGroup size="md">
+                    <CInput
+                      v-model="confirmpassword"
+                      placeholder="Confirm Password"
+                      :type="showConfirmPassword ? 'text' : 'password'"
+                    />
+                    <CInputRightElement>
+                      <c-icon-button
+                        @click="showConfirmPassword = !showConfirmPassword"
+                        size="sm"
+                        aria-label="Show/Hide Password"
+                        :icon="showConfirmPassword ? 'eye-slash': 'eye'"/>
+                    </CInputRightElement>
+                  </CInputGroup>
                 </CFormControl>
               </CBox>
             </div>
@@ -132,7 +148,11 @@ import {
   CText,
   CFormControl,
   CFormLabel,
-  CInput
+  CInput,
+  CInputGroup,
+  CInputRightElement,
+  CIcon,
+  CIonButton
 } from '@chakra-ui/vue'
 
 export default {
@@ -160,7 +180,11 @@ export default {
     CText,
     CFormControl,
     CFormLabel,
-    CInput
+    CInput,
+    CInputGroup,
+    CInputRightElement,
+    CIcon,
+    CIonButton
   },
   data () {
     return {

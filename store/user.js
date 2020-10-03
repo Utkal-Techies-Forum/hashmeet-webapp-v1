@@ -1,6 +1,6 @@
 export const state = () => ({
   users: [],
-  user: []
+  user: {}
 })
 
 export const mutations = {
@@ -8,7 +8,6 @@ export const mutations = {
     state.users = users
   },
   SET_USER(state, user) {
-    console.log(user);
     state.user = user
   }
 }
@@ -16,9 +15,7 @@ export const mutations = {
 export const actions = {
   async get({ commit }) {
     const res = await this.$repositories.user.all()
-    // const { status, data } = res
     if (res.status === 200 && res.data) {
-      //   const { data } = data
       commit('SET_USERS', res.data)
     } else {
       // Handle error here
@@ -27,9 +24,8 @@ export const actions = {
 
   async get_user({ commit }, user) {
     const res = await this.$repositories.user.show(user)
-    // const { status, data } = res
+    
     if (res.status === 200 && res.data) {
-      //   const { data } = data
       commit('SET_USER', res.data)
     } else {
       // Handle error here
@@ -38,11 +34,9 @@ export const actions = {
 
   async create_user({ commit }, id, user) {
     const res = await this.$repositories.user.create(id, user)
-    // const { status, data } = res
-    console.log(res.data[0]);
+    
     if (res.status === 201 && res.data) {
-      //   const { data } = data
-      commit('SET_USER', res.data[0].id)
+      commit('SET_USER', res.data.data[0])
     } else {
       // Handle error here
     }

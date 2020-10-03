@@ -1,3 +1,5 @@
+import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons'
+
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
@@ -23,8 +25,7 @@ export default {
   plugins: ["~/plugins/repositories.js"],
 
   axios: {
-    baseURL: process.env.API_BASE_URL || "https://jsonplaceholder.typicode.com",
-    contentType: 'application/json'
+    baseURL: process.env.API_BASE_URL || "https://jsonplaceholder.typicode.com"
   },
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -47,7 +48,18 @@ export default {
     // https://axios.nuxtjs.org
     "@nuxtjs/axios",
   ],
-
+  chakra: {
+    icons: {
+      // Here we state that we use `fa`
+      // icons library for Chakra's
+      // internal icon parser
+      iconPack: 'fa',
+      iconSet: {
+        faEye,
+        faEyeSlash
+      }
+    }
+  },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
   vue: {
