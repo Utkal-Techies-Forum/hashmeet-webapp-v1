@@ -63,14 +63,15 @@
 
                 <CFormControl mt="4">
                   <CFormLabel>Email</CFormLabel>
-                  <CInput placeholder="Email" />
+                  <CInput v-model="email" placeholder="Email" />
                 </CFormControl>
 
                 <CFormControl mt="4">
                   <CFormLabel>Password</CFormLabel>
                   <CInput
+                    v-model="password"
                     placeholder="Password"
-                    :type="show ? 'text' : 'password'"
+                    :type="showPassword ? 'text' : 'password'"
                     VModel="password"
                   />
                 </CFormControl>
@@ -78,8 +79,9 @@
                 <CFormControl mt="4">
                   <CFormLabel>Confirm Password</CFormLabel>
                   <CInput
+                    v-model="confirmpassword"
                     placeholder="Confirm Password"
-                    :type="show ? 'text' : 'password'"
+                    :type="showConfirmPassword ? 'text' : 'password'"
                     VModel="confirmpassword"
                   />
                 </CFormControl>
@@ -93,74 +95,20 @@
               </CButton>
               <CButton variant-color="blue" size="md" @click="step++"> Continue </CButton>
             </c-box>
+            <c-box v-if="step == 2">
+              <c-button variant-color="blue" size="md" @click="registerUser">
+                    Register
+                </c-button>
+            </c-box>
           </div>
         </Modal>
-
-        <CModal :is-open="registerFormModal" :on-close="close">
-          <CModalOverlay />
-          <CModalContent d="flex" justifyContent="center">
-            <CModalHeader></CModalHeader>
-            <CHeading as="h1" size="lg" align="center"
-              >Let's fill this form.</CHeading
-            >
-
-            <!-- <CBox m="2em">
-              <CFormControl>
-                <CFormLabel>Name</CFormLabel>
-                <CInput ref="initialRef" placeholder="Name" />
-              </CFormControl>
-
-              <CFormControl mt="4">
-                <CFormLabel>Email</CFormLabel>
-                <CInput placeholder="Email" />
-              </CFormControl>
-
-              <CFormControl mt="4">
-                <CFormLabel>Password</CFormLabel>
-                <CInput
-                  placeholder="Password"
-                  :type="show ? 'text' : 'password'"
-                  VModel="password"
-                />
-              </CFormControl>
-
-              <CFormControl mt="4">
-                <CFormLabel>Confirm Password</CFormLabel>
-                <CInput
-                  placeholder="Confirm Password"
-                  :type="show ? 'text' : 'password'"
-                  VModel="confirmpassword"
-                />
-              </CFormControl>
-            </CBox> -->
-
-            <CButton
-              variant-color="blue"
-              size="md"
-              w="100px"
-              ml="20em"
-              @click="
-                showModal = false;
-                showGetStartedModal = false;
-                registerFormModal = true;
-              "
-            >
-              Continue
-            </CButton>
-
-            <CModalFooter> </CModalFooter>
-            <CModalCloseButton @click="showGetStartedModal = false" />
-          </CModalContent>
-        </CModal>
       </CFlex>
     </CBox>
   </div>
 </template>
 
 <script lang="js">
-//import RepositoryFactoryV2 from '../../repositories/RepositoryFactory'
-//const Users = RepositoryFactoryV2.get('users')
-
+import { mapState } from 'vuex'
 import Modal from '../components/commons/Modal.vue';
 
 import {
@@ -216,6 +164,11 @@ export default {
   },
   data () {
     return {
+      email: '',
+      password: '',
+      confirmpassword: '',
+      showPassword: false,
+      showConfirmPassword: false,
       step: -1,
       showModal: false,
       showGetStartedModal: false,
@@ -244,6 +197,16 @@ export default {
     }
   },
   methods: {
+    async registerUser() {
+      // Normal validation.
+      if(!this.email || !this.password) return;
+
+      // Let's create the user.
+      await this.$store.dispatch('user/create_user', {
+        email: this.email,
+        password: this.password
+      })
+    },
     showToast () {
       this.$toast({
         title: 'Account created.',

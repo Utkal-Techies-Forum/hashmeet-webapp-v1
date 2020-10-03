@@ -1,4 +1,5 @@
-const resource = '/users';
+//const resource = '/users';
+const resource = 'https://run.mocky.io/v3/16f27190-263d-4fce-bb1f-b308bd170803';
 
 export default ($axios) => ({
   all() {

@@ -24,6 +24,7 @@ export default {
 
   axios: {
     baseURL: process.env.API_BASE_URL || "https://jsonplaceholder.typicode.com",
+    contentType: 'application/json'
   },
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
