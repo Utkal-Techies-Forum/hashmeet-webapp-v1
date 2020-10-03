@@ -12,13 +12,7 @@
       </CHeading>
       <CFlex justify="center" direction="column" align="center">
         <CButton
-          variant-color="blue"
-          mt="3"
-          @click="
-            showModal = true;
-            step = 0;
-          "
-        >
+          variant-color="blue" mt="3" @click=" showModal = true; step = 0;">
           Register
         </CButton>
 
@@ -60,92 +54,47 @@
                 </c-stack>
               </c-flex>
             </div>
+            <div v-if="step === 2">
+              <CBox m="2em">
+                <CFormControl>
+                  <CFormLabel>Name</CFormLabel>
+                  <CInput ref="initialRef" placeholder="Name" />
+                </CFormControl>
+
+                <CFormControl mt="4">
+                  <CFormLabel>Email</CFormLabel>
+                  <CInput placeholder="Email" />
+                </CFormControl>
+
+                <CFormControl mt="4">
+                  <CFormLabel>Password</CFormLabel>
+                  <CInput
+                    placeholder="Password"
+                    :type="show ? 'text' : 'password'"
+                    VModel="password"
+                  />
+                </CFormControl>
+
+                <CFormControl mt="4">
+                  <CFormLabel>Confirm Password</CFormLabel>
+                  <CInput
+                    placeholder="Confirm Password"
+                    :type="show ? 'text' : 'password'"
+                    VModel="confirmpassword"
+                  />
+                </CFormControl>
+              </CBox>
+            </div>
           </div>
           <div slot="footer">
             <c-box v-if="step == 1">
               <CButton variant-color="blue" size="md" @click="step = 0">
                 Back
               </CButton>
-              <CButton variant-color="blue" size="md"> Continue </CButton>
+              <CButton variant-color="blue" size="md" @click="step++"> Continue </CButton>
             </c-box>
           </div>
         </Modal>
-
-        <!-- <CModal :is-open="showModal">
-          <CModalOverlay />
-          <CModalContent d="flex" alignItems="center" justifyContent="center">
-            <CModalHeader>Welcome</CModalHeader>
-            <CModalBody>Great Decision!</CModalBody>
-            <CImage
-              m="0.4em"
-              w="168px"
-              h="186px"
-              src="/welcome.png"
-              alt="welcome"
-            />
-
-            <CBox align="center" m="2em">
-              <CHeading as="h4" size="md">Sign up as Attendee</CHeading>
-
-              <CButton
-                variant-color="blue"
-                size="md"
-                @click="showGetStartedModal = true"
-              >
-                Register
-              </CButton>
-            </CBox>
-
-            <CText>Or</CText>
-
-            <CBox align="center" m="2em">
-              <CHeading as="h4" size="md">Sign up as Speaker</CHeading>
-
-              <CButton
-                variant-color="blue"
-                size="md"
-                @click="showGetStartedModal = true"
-              >
-                Register
-              </CButton>
-            </CBox>
-
-            <CModalFooter> </CModalFooter>
-            <CModalCloseButton @click="showModal = false" />
-          </CModalContent>
-        </CModal> -->
-
-        <CModal :is-open="showGetStartedModal">
-          <CModalOverlay />
-          <CModalContent d="flex" alignItems="center" justifyContent="center">
-            <CModalHeader></CModalHeader>
-            <CModalBody>Looks like you are not a member yet.</CModalBody>
-            <CHeading as="h1" size="lg">Let's get started!</CHeading>
-
-            <CImage
-              m="0.4em"
-              w="168px"
-              h="186px"
-              src="/welcome.png"
-              alt="welcome"
-            />
-
-            <CButton
-              variant-color="blue"
-              size="md"
-              @click="
-                showModal = false;
-                showGetStartedModal = false;
-                registerFormModal = true;
-              "
-            >
-              Continue
-            </CButton>
-
-            <CModalFooter> </CModalFooter>
-            <CModalCloseButton @click="showGetStartedModal = false" />
-          </CModalContent>
-        </CModal>
 
         <CModal :is-open="registerFormModal" :on-close="close">
           <CModalOverlay />

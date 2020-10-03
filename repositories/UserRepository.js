@@ -1,15 +1,23 @@
-/* import RepositoryV1 from './Repository'
+const resource = '/users';
 
-const resourceSignup = '/users'
-const resourceSigin = '/auth/login'
-
-export default {
-  register (payload) {
-    return RepositoryV1.post(`${resourceSignup}`, payload)
+export default ($axios) => ({
+  all() {
+    return $axios.get(`${resource}`)
   },
 
-  signin (payload) {
-    return RepositoryV1.post(`${resourceSigin}`, payload)
-  }
-}
- */
+  show(id) {
+    return $axios.get(`${resource}/${id}`)
+  },
+
+  create(payload) {
+    return $axios.post(`${resource}`, payload)
+  },
+
+  update(id, payload) {
+    return $axios.post(`${resource}/${id}`, payload)
+  },
+
+  delete(id) {
+    return $axios.delete(`${resource}/${id}`)
+  },
+})
