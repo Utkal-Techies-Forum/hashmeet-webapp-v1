@@ -131,16 +131,6 @@ import {
   CBox,
   CStack,
   CButton,
-  CAvatarGroup,
-  CAvatar,
-  CAvatarBadge,
-  CModal,
-  CModalContent,
-  CModalOverlay,
-  CModalHeader,
-  CModalFooter,
-  CModalBody,
-  CModalCloseButton,
   CIconButton,
   CFlex,
   CHeading,
@@ -151,8 +141,6 @@ import {
   CInput,
   CInputGroup,
   CInputRightElement,
-  CIcon,
-  CIonButton
 } from '@chakra-ui/vue'
 
 export default {
@@ -163,16 +151,6 @@ export default {
     CBox,
     CStack,
     CButton,
-    CAvatarGroup,
-    CAvatar,
-    CAvatarBadge,
-    CModal,
-    CModalContent,
-    CModalOverlay,
-    CModalHeader,
-    CModalFooter,
-    CModalBody,
-    CModalCloseButton,
     CIconButton,
     CFlex,
     CHeading,
@@ -183,8 +161,6 @@ export default {
     CInput,
     CInputGroup,
     CInputRightElement,
-    CIcon,
-    CIonButton
   },
   data () {
     return {

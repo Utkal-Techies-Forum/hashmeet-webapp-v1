@@ -1,4 +1,4 @@
-import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons'
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
@@ -13,9 +13,9 @@ export default {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
+      { hid: "description", name: "description", content: "" }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -46,14 +46,22 @@ export default {
     // https://go.nuxtjs.dev/emotion
     "@nuxtjs/emotion",
     // https://axios.nuxtjs.org
-    "@nuxtjs/axios",
+    "@nuxtjs/axios"
   ],
   chakra: {
+    config: {
+      /**
+       * Setting this value to false disables
+       * component auto-import in your Vue templates
+       * @type {Boolean}
+       **/
+      autoImport: true
+    },
     icons: {
       // Here we state that we use `fa`
       // icons library for Chakra's
       // internal icon parser
-      iconPack: 'fa',
+      iconPack: "fa",
       iconSet: {
         faEye,
         faEyeSlash
@@ -65,7 +73,7 @@ export default {
   vue: {
     config: {
       productionTip: true,
-      devtools: true,
-    },
-  },
+      devtools: true
+    }
+  }
 };
