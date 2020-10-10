@@ -66,6 +66,14 @@ export default {
         faEye,
         faEyeSlash
       }
+    },
+    extendTheme: {
+      fonts: {
+        heading: '"Segoe UI", sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"',
+        body: '"Segoe UI", sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"'
+      },
+      shadows: {},
+      colors: {}
     }
   },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
