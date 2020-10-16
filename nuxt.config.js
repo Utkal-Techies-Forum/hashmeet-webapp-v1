@@ -1,4 +1,4 @@
-import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+import { faEye, faEyeSlash, faHeart, faShareSquare } from "@fortawesome/free-regular-svg-icons";
 
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
@@ -64,7 +64,9 @@ export default {
       iconPack: "fa",
       iconSet: {
         faEye,
-        faEyeSlash
+        faEyeSlash,
+        faHeart,
+        faShareSquare
       }
     },
     extendTheme: {

@@ -119,6 +119,10 @@
           </div>
         </Modal>
       </CFlex>
+
+      <c-box mx="auto" mt="5">
+        <event-card></event-card>
+      </c-box>
     </CBox>
   </div>
 </template>
@@ -126,6 +130,7 @@
 <script lang="js">
 import { mapState } from 'vuex'
 import Modal from '../components/commons/Modal.vue';
+import EventCard from '../components/EventCard.vue';
 
 import {
   CBox,
@@ -147,6 +152,7 @@ export default {
   name: 'App',
   inject: ['$chakraColorMode', '$toggleColorMode'],
   components: {
+    EventCard,
     Modal,
     CBox,
     CStack,
