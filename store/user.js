@@ -40,5 +40,5 @@ export const actions = {
     } else {
       // Handle error here
     }
-  },
+  }
 }

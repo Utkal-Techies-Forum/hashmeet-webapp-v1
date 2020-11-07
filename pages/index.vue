@@ -16,6 +16,8 @@
           Register
         </CButton>
 
+        <C-Button variant-color="blue" mt="3" @click="signin">Sign In</C-Button>
+
         <Modal v-model="showModal">
           <c-box slot="header">Welcome</c-box>
           <div slot="body">
@@ -119,10 +121,6 @@
           </div>
         </Modal>
       </CFlex>
-
-      <c-box mx="auto" mt="5">
-        <event-card></event-card>
-      </c-box>
     </CBox>
   </div>
 </template>
@@ -203,6 +201,16 @@ export default {
     }
   },
   methods: {
+    async signin() {
+      // Normal validation.
+      //if(!this.email || !this.password) return;
+
+      // Let's create the user.
+      await this.$store.dispatch('auth/signin', {
+        "email": "taditdash@yopmail.com",
+        "password": "password1"
+      })
+    },
     async registerUser() {
       // Normal validation.
       if(!this.email || !this.password) return;

@@ -1,8 +1,8 @@
 //const resource = '/auth/login';
-const resource = 'https://run.mocky.io/v3/adb71443-4c69-4610-a984-8aeed1ec92cc';
+const resourceSigin = 'http://localhost:3000/user/signin';
 
 export default ($axios) => ({
   signin (payload) {
-    return RepositoryV1.post(`${resourceSigin}`, payload)
+    return $axios.post(`${resourceSigin}`, payload)
   }
 })
